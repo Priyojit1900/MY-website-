@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General styling for body and sections */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #b6f7eb;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgb(0, 0, 0) !important;
+            font-size: 18px;
+            padding: 10px 20px;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Hover effect with animation */
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0;
+            background-color: #ff2f00;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: transparent;
+            color: #FF2F00 !important;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Page section styling */
+        .section {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column; /* Added to center text vertically */
+        }
+
+        /* Individual section styles for different pages */
+        #home {
+            background-image: url('https://wallpaperbat.com/img/892017-vector-landscape-wallpaper.png');
+            position: relative; /* Added for positioning */
+        }
+
+        #about { background-image: url('https://wallpapercave.com/wp/wp11594254.jpg'); }
+        #education { background-image: url('https://wallpapers.com/images/hd/8k-minimalist-ko2vwuici3ef8y18.jpg'); }
+        #experience { background-image: url('https://i.pinimg.com/originals/7b/fc/52/7bfc529b952511dcf261d3912fb03f4f.jpg'); }
+        #publications { background-image: url('https://marketplace.canva.com/EAE723QdYFQ/1/0/1600w/canva-white-grey-minimalist-desktop-wallpaper-28wcowOopRA.jpg'); }
+        #awards { background-image: url('https://images.wallpapersden.com/image/download/starman-minimalistic-vector_a2ZsZ2mUmZqaraWkpJRoZWVlrWZrbms.jpg'); }
+        #projects { background-image: url('https://i.pinimg.com/originals/1c/63/87/1c638711c161790cf6a631daf4917946.jpg'); }
+        #membership { background-image: url(''); }
+        #research { background-image: url('https://images8.alphacoders.com/954/954228.jpg'); }
+        #events { background-image: url('https://images.hdqwalls.com/download/red-mountains-minimalist-4k-s2-2048x1152.jpg'); }
+        #presentation { background-image: url('https://images2.alphacoders.com/493/493220.png'); }
+        #courses { background-image: url('https://wallpaper.forfun.com/fetch/5c/5c23d5af7af74ef897166f6b897c497f.jpeg'); }
+        
+
+
+        /* Welcome animation styles */
+        .content {
+            position: relative;
+        }
+
+        .content h2 {
+            position: absolute;
+            color: #fff;
+            transform: translate(-50%, -50%);
+            font-size: 8em;
+        }
+
+        .content h2:nth-child(1) {
+            color: transparent;
+            -webkit-text-stroke: 2px #000000;
+        }
+
+        .content h2:nth-child(2) {
+            color: #000000;
+            animation: animate 4s ease-in-out infinite;
+        }
+
+        @keyframes animate {
+            0%, 100% {
+                clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+            }
+            50% {
+                clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+            }
+        }
+
+        /* About Me section text styling */
+        #about h1 {
+            color: #e43100; /* Make "Hello, welcome to my world" bigger and colored */
+            font-size: 3em; /* Adjust the size as needed */
+            margin-bottom: 20px; /* Space between heading and body text */
+        }
+
+        #about .bio {
+            color: white; /* Regular text color */
+            font-size: 1.5em; /* Regular text size */
+            margin-top: 40px; /* Add space above the body text for more separation */
+        }
+
+        #about .bio h2 {
+            margin-top: 40px; /* Additional margin above "I am PRIYOJIT MONDAL" */
+        }
+
+        /* Progress circle styles */
+        .progress-circle {
+            position: relative;
+            width: 150px; /* Size of the circle */
+            height: 150px;
+            margin: 20px auto; /* Center the circles */
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            clip-path: circle(50%);
+            background-color: rgba(0, 204, 0, 0.5);
+            transform: rotate(-90deg);
+        }
+
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .circle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: circle(50%);
+            background-color: rgba(0, 204, 0, 0.5);
+            transform: rotate(calc(var(--percentage) * 1deg));
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <!-- Mobile menu button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Educational Background</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#publications">Paper/Patent Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#awards">Awards and Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#membership">Membership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#research">Research Thrust Area</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">List of Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#presentation">Poster/Paper Presentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section with Animated Welcome Text -->
+    <div id="home" class="section">
+        <div class="content">
+            <h2>Welcome</h2>
+            <h2>Welcome</h2>
+        </div>
+    </div>
+
+   <!-- About Me Section -->
+<div id="about" class="section" style="position: relative;">
+    <img src="https://media.licdn.com/dms/image/D4D03AQHVzq8yrlQrJw/profile-displayphoto-shrink_200_200/0/1720289603586?e=2147483647&v=beta&t=zQwKcq2DyHwZaR8yvIIj8be_z5Uc5CZcB7-5AAD6Tf8" alt="Priyojit Mondal" style="position: absolute; top: 20px; left: 20px; width: 160px; height: 160px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    
+    <h1>Hello, welcome to my website</h1>
+    <div class="bio">
+        <h2>I am PRIYOJIT MONDAL</h2>
+        <p>D.O.B: 13/11/2005 </p>
+        <p>A driven Computer Science Engineering student. I'm passionate about coding, creativity, and innovation.</p>
+        <p>Proficient in: <strong>Python | C++ | HTML | CSS | Video/Photo Editing</strong></p>
+        <p>Beyond academics, I enjoy: <strong>Cricket | Movies | Action Games|RUNNING </strong></p>
+        <p>Excited to collaborate and bring innovative ideas to life!</p>
+    </div>
+</div>
+
+
+    <!-- EDUCATION QUALIFICATION Section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Background</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .education-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        /* Individual boxes for each education level */
+        .education-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            text-align: center;
+        }
+
+        .education-box h2 {
+            color: #ff7b00;
+            margin-bottom: 10px;
+        }
+
+        .education-box p {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        /* Circular loading styles */
+        .circular-progress {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .circular-progress svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .circular-progress circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 440;
+            transition: stroke-dashoffset 1s;
+        }
+
+        .circular-progress .bg {
+            stroke: #d9d9d9;
+        }
+
+        .circular-progress .progress {
+            stroke: #ff2f00; /* Color for percentage animation */
+        }
+
+        .percentage-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ff2f00; /* Text color */
+        }
+
+        /* Hover-animated heading */
+        h1.animated-heading {
+            font-size: 3em;
+            color: black;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            overflow: hidden;
+            transition: color 0.5s ease;
+        }
+
+        h1.animated-heading:hover {
+            color: #FF2F00;
+        }
+
+        h1.animated-heading::before {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 100%;
+            background-color: #ff2f00;
+            bottom: 0;
+            left: -100%;
+            transition: left 0.5s ease;
+        }
+
+        h1.animated-heading:hover::before {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Education Section -->
+    <div id="education" class="section">
+        <h1 class="animated-heading">Educational Background</h1>
+
+        <div class="education-container">
+            <!-- Matriculation -->
+            <div class="education-box">
+                <h2>Matriculation</h2>
+                <p>BHALKUTI HIGH SCHOOL (WBBSE), West Bengal<br>(Year 2022)</p>
+                <div class="circular-progress">
+                    <svg>
+                        <circle class="bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="progress" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <div class="percentage-text">88%</div>
+                </div>
+            </div>
+
+            <!-- Higher Secondary -->
+            <div class="education-box">
+                <h2>Higher Secondary</h2>
+                <p>BOLPUR HIGH SCHOOL (WBCHSE), West Bengal<br>(Year 2024)</p>
+                <div class="circular-progress">
+                    <svg>
+                        <circle class="bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="progress" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <div class="percentage-text">75%</div>
+                </div>
+            </div>
+
+            <!-- Graduation -->
+            <div class="education-box">
+                <h2>Graduation</h2>
+                <p>B.TECH in Computer Science Engineering<br>University of Engineering and Management, Kolkata<br>(Year 2024-2028)</p>
+                <div class="circular-progress">
+                    <svg>
+                        <circle class="bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="progress" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <div class="percentage-text">Ongoing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for circular animation -->
+    <script>
+        const progressCircles = document.querySelectorAll('.progress');
+        const percentages = [88, 75, 100]; // Adjust the percentages here
+
+        progressCircles.forEach((circle, index) => {
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (percentages[index] / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+            circle.style.stroke = index === 2 ? '#00c9ff' : '#ff2f00'; // Change the stroke color for the last circle
+        });
+    </script>
+
+</body>
+</html>
+
+<!-- Experience Section -->
+<div id="experience" class="section" style="margin-top: 30px;">
+    <h2 style="
+        font-size: 3em;
+        text-align: center;
+        color: transparent;
+        background: linear-gradient(90deg, #ff6a00, #ee0979); /* Gradient from Orange to Pink */
+        -webkit-background-clip: text; /* Clipping the background to text */
+        background-clip: text;
+        filter: blur(1px); /* Slight blur effect */
+        position: relative;
+        margin-bottom: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        animation: pulse 1.5s infinite; /* Pulsing effect */
+    ">Experience</h2>
+    
+    <div style="
+        background: linear-gradient(135deg, #43cea2, #185a9d); /* Green to Blue gradient */
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4), 0px 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 850px;
+        margin: 0 auto;
+        border: 2px solid #43cea2;
+    ">
+        <ul style="list-style-type: none; padding: 0; color: black; font-size: 1.2em; font-weight: bold;">
+            <li style="padding-bottom: 15px; margin-bottom: 15px; background: linear-gradient(135deg, #600909, #ed0a0d); /* Orange to Red gradient */ border-radius: 15px; padding: 20px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);">
+                <span style="font-weight: bold;">Developed a simple chatbot</span> using Botpress studio.
+            </li>
+            <li style="padding-bottom: 15px; margin-bottom: 15px; background: linear-gradient(135deg, #fc6767, #ec008c); /* Red to Pink gradient */ border-radius: 15px; padding: 20px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);">
+                <span style="font-weight: bold;">Participated in college coding competition</span>.
+            </li>
+            <li style="background: linear-gradient(135deg, #5bff03, #124800); /* Light Green to Aqua gradient */ border-radius: 15px; padding: 20px; box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);">
+                <span style="font-weight: bold;"> </span> Designed and edited videos for school cultural events (2023-2024).
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Add keyframes for pulsing effect -->
+<style>
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            filter: blur(1px);
+        }
+        50% {
+            transform: scale(1.05); /* Slightly grow */
+            filter: blur(2px); /* More blur effect */
+        }
+    }
+</style>
+
+<!-- Publications section -->
+<section id="publications" class="section" style="position: relative; height: 100vh;">
+    
+    <!-- Patent Stamp Image -->
+    <img src="https://png.pngtree.com/png-clipart/20230804/original/pngtree-vector-patented-stamp-brand-patent-patents-vector-picture-image_9515947.png" alt="Patent Stamp" style="width: 213px; position: absolute; top: 20px; left: 20px;">
+    
+    <!-- Gradient Rectangle Box with Attractive Heading -->
+    <div style="width: 500px; height: 250px; background: linear-gradient(135deg, #ff0000 0%, #3b0000 100%); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 30px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h2 style="margin-bottom: 20px; font-size: 28px; font-weight: bold; font-family: 'Arial Black', sans-serif; color: #fff; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);"> Paper/ Patent Publications</h2>
+        <p style="font-size: 20px; color: #f0f0f0; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">Not yet</p>
+    </div>
+    
+</section>
+
+<!-- Awards and Achievements Section -->
+<div id="awards" class="section" style="position: relative; height: 100vh;">
+    
+    <!-- 3D Text Heading -->
+    <h1 style="font-size: 48px; font-weight: bold; color: #fff; font-family: 'Arial Black', sans-serif; letter-spacing: 2px; text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7), 0px 0px 10px rgba(255, 255, 255, 0.5); text-align: center; position: absolute; top: 10%; left: 50%; transform: translateX(-50%);">
+        Awards and Achievements
+    </h1>
+   <!-- Left Side: Educational Awards Box -->
+<div style="width: 400px; height: auto; min-height: 400px; background: linear-gradient(135deg, #ff512f, #dd2476); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 30px; position: absolute; top: 50%; left: 5%; transform: translateY(-50%);">
+    <h2 style="margin-bottom: 20px; font-size: 24px; font-weight: bold; font-family: 'Arial Black', sans-serif; color: #fff; letter-spacing: 1.5px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Educational Awards</h2>
+    <ul style="font-size: 12px; color: #f0f0f0; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); list-style: none; padding: 0;">
+        <li>1. School Topper Award: 1st Prize, BHALKUTI HIGH SCHOOL, for outstanding performance in Matriculation Examinations (2022)</li>
+        <li>2. Honored by Layekpur Bandhab Durga Puja Club for Matriculation Performance (2022)</li>
+        <li>3. Panchayat Award: Recognized by Hatiya Gram Panchayat for topping the charts in matriculation, showcasing my commitment to academic success (2022)</li>
+        <li>4. Block-Level Award: Awarded by Labpur block(Birbhum, W.B) for outstanding performance, highlighting my potential for future achievements (2022)</li>
+        <li>5. Qualified in NMMSE 2019</li>
+        <li>6.Star Talent Examination: 2nd Position (2017), 3rd Position (2012)
+            - Qualified: 2014, 2015, 2016 </li>
+    </ul>
+</div>
+
+    
+    <!-- Right Side: Sports Awards Box -->
+    <div style="width: 350px; height: 350px; background: linear-gradient(135deg, #56ccf2, #2f80ed); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 30px; position: absolute; top: 50%; right: 5%; transform: translateY(-50%);">
+        <h2 style="margin-bottom: 20px; font-size: 24px; font-weight: bold; font-family: 'Arial Black', sans-serif; color: #fff; letter-spacing: 1.5px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Sports Awards</h2>
+        <p style="font-size: 18px; color: #f0f0f0; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">
+
+            <li>1.1st Position (2014, 2015, 2016, 2018, 2019) - School Level , 2nd Position (2013) - School Level</li>
+            <li>2.Long jump : 
+            2nd Position (2014, 2016) School Level<li>
+            <li>3.Man of the Match in School Level Cricket Tournaments(Multiple Times)<li>
+        </p>
+    </div>
+</div>
+
+
+<!-- Projects Section -->
+<div id="projects" class="section" style="position: relative; height: 100vh;">
+    
+    <!-- 3D Gradient Heading Box -->
+    <div style="width: fit-content; padding: 20px 40px; background: linear-gradient(135deg, #d3006d, #680229, #3498db); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; margin: 0 auto; position: absolute; top: 5%; left: 50%; transform: translate(-50%, 0);">
+        <h1 style="font-size: 36px; font-weight: bold; color: #fff; font-family: 'Arial Black', sans-serif; letter-spacing: 1.5px; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);">Projects List</h1>
+    </div>
+    
+    <!-- Project 1 Box -->
+    <div style="width: 500px; background: linear-gradient(135deg, #d3006d, #680229); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 5px; margin: 0 auto 15px auto;">
+        <p style="font-size: 16px; font-weight: bold; color: #fff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">1: Measuring Distance Using Sound Frequency with Arduino Uno (2024) </p>
+    </div>
+
+    <!-- Project 2 Box -->
+    <div style="width: 500px; background: linear-gradient(135deg, #ff6f61, #c70039); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 5px; margin: 0 auto 15px auto;">
+        <p style="font-size: 16px; font-weight: bold; color: #fff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">2: </p>
+    </div>
+
+    <!-- Project 3 Box -->
+    <div style="width: 500px; background: linear-gradient(135deg, #e91e63, #880e4f); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 5px; margin: 0 auto 15px auto;">
+        <p style="font-size: 16px; font-weight: bold; color: #fff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">3: </p>
+    </div>
+
+</div>
+
+
+
+    <!-- Membership Section -->
+    <div id="membership" class="section" style="position: relative; height: auto; padding: 50px 0; background: linear-gradient(135deg, #3498db, #8e44ad);">
+        <h1 style="text-align: center; margin-bottom: 30px; font-size: 40px; font-weight: bold; font-family: 'Georgia', serif; color: #fff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">Membership</h1>
+    
+    <!-- Membership Box -->
+    <div style="width: 400px; height: auto; background: linear-gradient(135deg, #026cb2, #08005d); border-radius: 15px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 30px; margin: 0 auto;">
+        
+        <!-- Circular Image (Logo) Placeholder -->
+        <div style="width: 150px; height: 150px; border-radius: 50%; background-color: #fff; margin: 0 auto; overflow: hidden;">
+            <img src="https://banner2.cleanpng.com/20180412/pzq/avfht59wd.webp" alt="Logo" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        
+        <!-- Membership Text -->
+        <p style="margin-top: 20px; font-size: 18px; font-family: 'Arial Black', sans-serif; color: #fff; letter-spacing: 1.2px; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);">
+            Membership of IEEE (Institute of Electrical and Electronics Engineers)
+        </p>
+    </div>
+</div>
+
+
+<!-- Research Thrust Area Section -->
+<div id="research" class="section" style="position: relative; height: 100vh;">
+
+    <h2 style="text-align: center; font-size: 36px; font-weight: bold; font-family: 'Arial Black', sans-serif; background: -webkit-linear-gradient(135deg, #0bc8c8, #06c87a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1.5px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); margin-top: 0; padding-top: 20px;">
+        Research Thrust Area
+    </h2>
+
+    
+        <!-- Research Areas in individual boxes -->
+        <div style="padding: 10px 0;">
+            <div style="border-radius: 10px; padding: 15px; margin-bottom: 10px; background: linear-gradient(135deg, #56ccf2, #2f80ed);">
+                <h3 style="margin: 0; font-size: 20px; color: #fff;">1. A.I in National Security</h3>
+            </div>
+            <div style="border-radius: 10px; padding: 15px; margin-bottom: 10px; background: linear-gradient(135deg, #ff512f, #dd2476);">
+                <h3 style="margin: 0; font-size: 20px; color: #fff;">2. Astronomy</h3>
+            </div>
+            <div style="border-radius: 10px; padding: 15px; background: linear-gradient(135deg, #f12711, #f5af19);">
+                <h3 style="margin: 0; font-size: 20px; color: #fff;">3. Preservation of Indian Culture and Heritage</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- List of Events Section -->
+<div id="events" class="section" style="position: relative; height: 100vh;">
+    <h1 style="text-align: center; margin-bottom: 50px; font-family: 'Arial Black', sans-serif;">List of Events</h1>
+    
+    <!-- Event Box 1 -->
+    <div style="width: 600px; margin: 0 auto; margin-bottom: 20px; background: linear-gradient(135deg, #ff512f, #dd2476); border-radius: 10px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 20px;">
+        <p style="font-size: 18px; color: #fff; font-family: 'Arial', sans-serif; line-height: 1.5;">
+            1. Participated in Arduino workshop, app development, quiz, and also worked as a volunteer in Elevate 2024 organized by IEEE IEM Student Branch
+        </p>
+    </div>
+
+    <!-- Event Box 2 -->
+    <div style="width: 600px; margin: 0 auto; margin-bottom: 20px; background: linear-gradient(135deg, #3498db, #8e44ad); border-radius: 10px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 20px;">
+        <p style="font-size: 18px; color: #fff; font-family: 'Arial', sans-serif; line-height: 1.5;">
+            2. Participated in 3D printing workshop organized by IEM Newtown (2024)
+        </p>
+    </div>
+
+    <!-- Event Box 3 -->
+    <div style="width: 600px; margin: 0 auto; background: linear-gradient(135deg, #56ccf2, #2f80ed); border-radius: 10px; box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.4); text-align: center; padding: 20px;">
+        <p style="font-size: 18px; color: #fff; font-family: 'Arial', sans-serif; line-height: 1.5;">
+            3. Participated in an industrial visit to Diamond Beverages Coca-Cola Private Ltd on 20/09/2024 organized by IEM Newtown
+        </p>
+    </div>
+</div>
+
+
+   
+    
+    
+<!-- Poster/Paper Presentation Section -->
+<div id="presentation" class="section" style="position: relative; height: 100vh;">
+    <h1 style="text-align: center; margin-bottom: 50px; font-family: 'Arial Black', sans-serif;">Poster/Paper Presentation</h1>
+    
+    <!-- Poster Presentation Box -->
+    <div style="width: 500px; margin: 0 auto; background: linear-gradient(135deg, #ff512f, #dd2476); border-radius: 15px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5); text-align: center; padding: 20px;">
+        <h2 style="margin-bottom: 20px; font-size: 24px; font-weight: bold; font-family: 'Arial Black', sans-serif; color: #fff; letter-spacing: 1.5px; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);">Poster Presentation</h2>
+        <p style="font-size: 18px; color: #f0f0f0; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">
+            1. PHYSICS POSTER COMPETITION (UEM-2024):- SUPER CONDUCTIVITY 
+        </p>
+    </div>
+</div>
+
+    
+<!-- Courses Section -->
+<div id="courses" class="section" style="position: relative; height: 100vh;">
+    <h1 style="text-align: center; margin-bottom: 50px; font-family: 'Arial Black', sans-serif;">Courses</h1>
+    
+    <!-- Course Box -->
+    <div style="width: 500px; margin: 0 auto; padding: 20px; border-radius: 15px; box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: space-between;">
+
+        <!-- Small Image Section for Logo -->
+        <div style="width: 50px; height: 50px; background-color: #f0f0f0; border-radius: 50%; overflow: hidden; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIhKMOUvXTt3RXqBxrEnIPRtSFC89-cqgK1Q&s" alt="Course Logo" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <!-- Course Details -->
+        <div style="flex: 1; margin-left: 20px; text-align: left;">
+            <h2 style="font-size: 18px; font-weight: bold; font-family: 'Arial', sans-serif; margin-bottom: 10px; color: #02ece8;">
+                Soft Skill Development (8 Weeks)
+            </h2>
+            <p style="font-size: 16px; color: #c9c917;">Ongoing</p>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+<div id="Contact_ME" class="section" style="position: relative; height: auto; padding: 50px 0; background: linear-gradient(135deg, #3498db, #8e44ad);">
+    <h1 style="text-align: center; margin-bottom: 30px; font-size: 40px; font-weight: bold; font-family: 'Georgia', serif; color: #fff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);">Contact Me</h1>
+    
+    <div class="contact-details" style="text-align: center; color: white; font-size: 1.2em;">
+        <p>Address: Birbhum, West Bengal, India</p>
+        <p>
+            <img src="https://cdn.icon-icons.com/icons2/730/PNG/512/gmail_icon-icons.com_62758.png" alt="Gmail Logo" style="width: 25px; vertical-align: middle; margin-right: 10px;">
+            mondalpriyojit9@gmail.com
+        </p>
+    </div>
+</div>
+
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
